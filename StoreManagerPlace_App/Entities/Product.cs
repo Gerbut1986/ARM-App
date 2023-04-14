@@ -1,0 +1,14 @@
+﻿namespace StoreManagerPlace_App.Entities
+{
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int Price { get; set; }
+        public System.DateTime DateRelease { get; set; }
+        public int CategoryId { get; set; }
+        public string Photo { get; set; }
+        public bool IsStock { get; set; }
+    }
+}
