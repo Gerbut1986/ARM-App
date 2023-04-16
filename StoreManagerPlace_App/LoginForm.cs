@@ -1,7 +1,6 @@
 ﻿namespace StoreManagerPlace_App
 {
     using System;
-    using System.Data;
     using System.Linq;
     using System.Windows.Forms;
     using StoreManagerPlace_App.Forms;
@@ -15,6 +14,7 @@
 
         public LoginForm()
         {
+            //new CreateOrderForm().ShowDialog();
             InitializeComponent();
             service = new SMP_Service(Credential.ConnectStr);
         }
@@ -26,7 +26,8 @@
                 Error_Lbl.Text = res.ToString();
             else if (res is Entities.User)
             {
-                var mf = new MainForm(CurrentUser, service.GetProductsADO(), service.GetProducts());
+                LoginGroupBox.Enabled = false;
+                var mf = new MainForm(CurrentUser, service.GetProducts());
                 mf.Owner = this;
                 mf.ShowDialog();
             }
@@ -63,6 +64,7 @@
         {
             try
             {
+                CurrentUser.RememberMe = RememberMe_Chb.Checked;
                 CurrentUser.DateExit = DateTime.Now;
                 var closeRes = service.UpdateUser(CurrentUser);
             }
@@ -70,5 +72,21 @@
             finally { if (!isFormClosing) this.Close(); }
         }
         #endregion
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            var user = service.GetUsers().OrderByDescending(o => o.DateExit).First();
+            if (user.RememberMe)
+            {
+                Login_Txt.Text = user.Login;
+                Pass_Txt.Text = user.Password;
+                RememberMe_Chb.Checked = true;
+            }
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            LoginGroupBox.Enabled = true;
+        }
     }
 }

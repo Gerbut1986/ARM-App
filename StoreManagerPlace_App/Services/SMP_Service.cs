@@ -1,14 +1,13 @@
 ﻿namespace StoreManagerPlace_App.Services
 {
+    using StoreManagerPlace_App.Entities.Security;
     using StoreManagerPlace_App.Context.EF;
     using StoreManagerPlace_App.Entities;
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Data;
-    using System.Security.Permissions;
-    using StoreManagerPlace_App.Entities.Security;
 
-    internal class SMP_Service
+    public class SMP_Service
     {
         private readonly DataContext db;
 
@@ -45,9 +44,7 @@
 
         public DataSet GetProductsADO()
         {
-            SqlConnection conn = null; DataSet dataSet = null;
-            try
-            {
+            SqlConnection conn = null; DataSet dataSet = null;  
                 using (conn = new SqlConnection(Credential.ConnectStr))
                 {
                     conn.Open();
@@ -57,9 +54,6 @@
                     sqlAdapter.Fill(dataSet);
                     cmd.ExecuteNonQuery();
                 }
-            }
-            catch { }
-            finally { conn.Close(); }
 
             return dataSet;
         }
@@ -93,6 +87,41 @@
         public IEnumerable<Category> GetCategories()
         {
             return db.Categories;
+        }
+        #endregion
+
+        #region Orders:
+        public IEnumerable<Product> GetOrders()
+        {
+            return db.Products;
+        }
+
+        public DataSet GetOrdersADO()
+        {
+            SqlConnection conn = null; DataSet dataSet = null;
+                using (conn = new SqlConnection(Credential.ConnectStr))
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("SELECT * FROM Orders", conn);
+                    SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
+                    dataSet = new DataSet();
+                    sqlAdapter.Fill(dataSet);
+                    cmd.ExecuteNonQuery();
+                }
+
+            return dataSet;
+        }
+
+        public string AddOrder(Order order)
+        {
+            if (order != null)
+            {
+                db.Orders.Add(order);
+                var res = db.SaveChanges();
+                return res == 1 ? $"{res} замовлення № {order.OrderNumber} успішно добавленo в таблицю Orders!"
+                    : "Помилка при добавленні нового товару...";
+            }
+            else return "Ви не створили замовлення ще...";
         }
         #endregion
     }

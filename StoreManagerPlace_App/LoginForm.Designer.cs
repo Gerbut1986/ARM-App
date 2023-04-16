@@ -35,10 +35,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Enter_Btn = new System.Windows.Forms.Button();
             this.Cancel_Btn = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.LoginGroupBox = new System.Windows.Forms.GroupBox();
+            this.RememberMe_Chb = new System.Windows.Forms.CheckBox();
             this.Error_Lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox1.SuspendLayout();
+            this.LoginGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
@@ -50,6 +51,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.pictureBox1_MouseEnter);
             // 
             // label1
             // 
@@ -90,8 +92,8 @@
             // 
             // Enter_Btn
             // 
-            this.Enter_Btn.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Enter_Btn.Location = new System.Drawing.Point(73, 199);
+            this.Enter_Btn.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Enter_Btn.Location = new System.Drawing.Point(74, 210);
             this.Enter_Btn.Name = "Enter_Btn";
             this.Enter_Btn.Size = new System.Drawing.Size(142, 39);
             this.Enter_Btn.TabIndex = 5;
@@ -101,8 +103,8 @@
             // 
             // Cancel_Btn
             // 
-            this.Cancel_Btn.Font = new System.Drawing.Font("Palatino Linotype", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Cancel_Btn.Location = new System.Drawing.Point(228, 199);
+            this.Cancel_Btn.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancel_Btn.Location = new System.Drawing.Point(229, 210);
             this.Cancel_Btn.Name = "Cancel_Btn";
             this.Cancel_Btn.Size = new System.Drawing.Size(142, 39);
             this.Cancel_Btn.TabIndex = 6;
@@ -110,23 +112,34 @@
             this.Cancel_Btn.UseVisualStyleBackColor = true;
             this.Cancel_Btn.Click += new System.EventHandler(this.Cancel_Btn_Click);
             // 
-            // groupBox1
+            // LoginGroupBox
             // 
-            this.groupBox1.Controls.Add(this.Error_Lbl);
-            this.groupBox1.Controls.Add(this.Cancel_Btn);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.Enter_Btn);
-            this.groupBox1.Controls.Add(this.Login_Txt);
-            this.groupBox1.Controls.Add(this.Pass_Txt);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 147);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(445, 263);
-            this.groupBox1.TabIndex = 7;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Автоматизоване робоче місце менеджера магазину ";
+            this.LoginGroupBox.Controls.Add(this.RememberMe_Chb);
+            this.LoginGroupBox.Controls.Add(this.Error_Lbl);
+            this.LoginGroupBox.Controls.Add(this.Cancel_Btn);
+            this.LoginGroupBox.Controls.Add(this.label1);
+            this.LoginGroupBox.Controls.Add(this.Enter_Btn);
+            this.LoginGroupBox.Controls.Add(this.Login_Txt);
+            this.LoginGroupBox.Controls.Add(this.Pass_Txt);
+            this.LoginGroupBox.Controls.Add(this.label2);
+            this.LoginGroupBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.LoginGroupBox.Font = new System.Drawing.Font("Palatino Linotype", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoginGroupBox.Location = new System.Drawing.Point(0, 147);
+            this.LoginGroupBox.Name = "LoginGroupBox";
+            this.LoginGroupBox.Size = new System.Drawing.Size(445, 263);
+            this.LoginGroupBox.TabIndex = 7;
+            this.LoginGroupBox.TabStop = false;
+            this.LoginGroupBox.Text = "Автоматизоване робоче місце менеджера магазину ";
+            // 
+            // RememberMe_Chb
+            // 
+            this.RememberMe_Chb.AutoSize = true;
+            this.RememberMe_Chb.Location = new System.Drawing.Point(151, 174);
+            this.RememberMe_Chb.Name = "RememberMe_Chb";
+            this.RememberMe_Chb.Size = new System.Drawing.Size(143, 22);
+            this.RememberMe_Chb.TabIndex = 8;
+            this.RememberMe_Chb.Text = "Запамятати мене?";
+            this.RememberMe_Chb.UseVisualStyleBackColor = true;
             // 
             // Error_Lbl
             // 
@@ -143,7 +156,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.ClientSize = new System.Drawing.Size(445, 410);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.LoginGroupBox);
             this.Controls.Add(this.pictureBox1);
             this.MaximizeBox = false;
             this.Name = "LoginForm";
@@ -151,9 +164,10 @@
             this.Text = "[Авторизація]";
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoginForm_FormClosing);
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.LoginGroupBox.ResumeLayout(false);
+            this.LoginGroupBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -168,7 +182,8 @@
         private System.Windows.Forms.Button Enter_Btn;
         private System.Windows.Forms.Button Cancel_Btn;
         private System.Windows.Forms.Label Error_Lbl;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox LoginGroupBox;
+        private System.Windows.Forms.CheckBox RememberMe_Chb;
     }
 }
 

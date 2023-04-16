@@ -1,6 +1,5 @@
 ﻿namespace StoreManagerPlace_App.Forms
 {
-    using StoreManagerPlace_App.Database;
     using StoreManagerPlace_App.Entities;
     using System.Collections.Generic;
     using System.Windows.Forms;
@@ -9,38 +8,40 @@
 
     public partial class MainForm : Form
     {
-        private System.Data.DataSet productsDS;
         private IEnumerable<Product> productsLst;
         private DateTime DateEnter { get; set; }
+        public User CurrentUser { get; }
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        public MainForm(User entered, System.Data.DataSet productsDS, IEnumerable<Product> productsLst)
+        public MainForm(User entered, IEnumerable<Product> productsLst)
         {
             InitializeComponent();
-            this.productsDS = productsDS;
-            this.productsLst = productsLst;
+            CurrentUser = entered;
             DateEnter = DateTime.Now;
+            this.productsLst = productsLst;
             this.Text = $"Привіт - {entered.FirstName} {entered.LastName}!";
         }
 
         #region Button's 'Click' event hundlers:
         private void AddDel_Btn_Click(object sender, EventArgs e)
         {
-            new AddDelForm(productsLst).ShowDialog();
+            new AddDelForm().ShowDialog();
         }
 
         private void ViewProds_Btn_Click(object sender, EventArgs e)
         {
-            new ListForm(productsDS).ShowDialog();
+            new ListForm().ShowDialog();
         }
 
-        private void CreateOrder_Btn_Click(object sender, EventArgs e)
+        private void CreateOrder_Btn_Click_1(object sender, EventArgs e)
         {
-
+            var cof = new CreateOrderForm();
+            cof.Owner = this;
+            cof.ShowDialog();
         }
 
         private void SessStat_Btn_Click(object sender, EventArgs e)
@@ -55,7 +56,7 @@
         }
         #endregion
 
-        #region Button's 'MouseEnter & MouseLive' event hundlers:
+        #region Button's 'MouseEnter & MouseLeave' event hundlers:
         private void AddDel_Btn_MouseEnter(object sender, EventArgs e)
         {
             AddDel_Btn.BackColor = Color.Black;

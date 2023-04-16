@@ -10,6 +10,7 @@
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Role { get; set; }
+        public bool RememberMe { get; set; }
         public System.DateTime DateRegister { get; set; }
         public System.DateTime DateEnter { get; set; }
         public System.DateTime DateExit { get; set; }
