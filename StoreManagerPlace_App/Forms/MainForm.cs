@@ -37,7 +37,7 @@
             new ListForm().ShowDialog();
         }
 
-        private void CreateOrder_Btn_Click_1(object sender, EventArgs e)
+        private void CreateOrder_Btn_Click(object sender, EventArgs e)
         {
             var cof = new CreateOrderForm();
             cof.Owner = this;

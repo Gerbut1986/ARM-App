@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.SelProt_Lst = new System.Windows.Forms.ListBox();
             this.Products_Cmb = new System.Windows.Forms.ComboBox();
             this.Add_Btn = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Order_Lst = new System.Windows.Forms.ListBox();
-            this.Order_Btn = new System.Windows.Forms.Button();
-            this.SelProt_Lst = new System.Windows.Forms.ListBox();
             this.Delete_Btn = new System.Windows.Forms.Button();
+            this.Order_Btn = new System.Windows.Forms.Button();
+            this.Order_Lst = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,15 +52,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(326, 450);
             this.panel1.TabIndex = 1;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(326, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(651, 450);
-            this.panel2.TabIndex = 2;
             // 
             // groupBox1
             // 
@@ -75,6 +66,15 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Вибери продукт у випадаючому списку";
+            // 
+            // SelProt_Lst
+            // 
+            this.SelProt_Lst.FormattingEnabled = true;
+            this.SelProt_Lst.ItemHeight = 20;
+            this.SelProt_Lst.Location = new System.Drawing.Point(12, 90);
+            this.SelProt_Lst.Name = "SelProt_Lst";
+            this.SelProt_Lst.Size = new System.Drawing.Size(308, 284);
+            this.SelProt_Lst.TabIndex = 2;
             // 
             // Products_Cmb
             // 
@@ -95,6 +95,15 @@
             this.Add_Btn.UseVisualStyleBackColor = true;
             this.Add_Btn.Click += new System.EventHandler(this.Add_Btn_Click);
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(326, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(651, 450);
+            this.panel2.TabIndex = 2;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.Delete_Btn);
@@ -108,37 +117,6 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Вибрані товари";
-            // 
-            // Order_Lst
-            // 
-            this.Order_Lst.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Order_Lst.FormattingEnabled = true;
-            this.Order_Lst.ItemHeight = 20;
-            this.Order_Lst.Location = new System.Drawing.Point(3, 63);
-            this.Order_Lst.Name = "Order_Lst";
-            this.Order_Lst.Size = new System.Drawing.Size(645, 384);
-            this.Order_Lst.TabIndex = 0;
-            this.Order_Lst.SelectedIndexChanged += new System.EventHandler(this.Order_Lst_SelectedIndexChanged);
-            // 
-            // Order_Btn
-            // 
-            this.Order_Btn.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Order_Btn.Location = new System.Drawing.Point(3, 24);
-            this.Order_Btn.Name = "Order_Btn";
-            this.Order_Btn.Size = new System.Drawing.Size(645, 39);
-            this.Order_Btn.TabIndex = 1;
-            this.Order_Btn.Text = "Зробити замовлення";
-            this.Order_Btn.UseVisualStyleBackColor = true;
-            this.Order_Btn.Click += new System.EventHandler(this.Order_Btn_Click);
-            // 
-            // SelProt_Lst
-            // 
-            this.SelProt_Lst.FormattingEnabled = true;
-            this.SelProt_Lst.ItemHeight = 20;
-            this.SelProt_Lst.Location = new System.Drawing.Point(12, 90);
-            this.SelProt_Lst.Name = "SelProt_Lst";
-            this.SelProt_Lst.Size = new System.Drawing.Size(308, 284);
-            this.SelProt_Lst.TabIndex = 2;
             // 
             // Delete_Btn
             // 
@@ -155,6 +133,28 @@
             this.Delete_Btn.MouseEnter += new System.EventHandler(this.Delete_Btn_MouseEnter);
             this.Delete_Btn.MouseLeave += new System.EventHandler(this.Delete_Btn_MouseLeave);
             // 
+            // Order_Btn
+            // 
+            this.Order_Btn.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Order_Btn.Location = new System.Drawing.Point(3, 24);
+            this.Order_Btn.Name = "Order_Btn";
+            this.Order_Btn.Size = new System.Drawing.Size(645, 39);
+            this.Order_Btn.TabIndex = 1;
+            this.Order_Btn.Text = "Зробити замовлення";
+            this.Order_Btn.UseVisualStyleBackColor = true;
+            this.Order_Btn.Click += new System.EventHandler(this.Order_Btn_Click);
+            // 
+            // Order_Lst
+            // 
+            this.Order_Lst.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Order_Lst.FormattingEnabled = true;
+            this.Order_Lst.ItemHeight = 20;
+            this.Order_Lst.Location = new System.Drawing.Point(3, 63);
+            this.Order_Lst.Name = "Order_Lst";
+            this.Order_Lst.Size = new System.Drawing.Size(645, 384);
+            this.Order_Lst.TabIndex = 0;
+            this.Order_Lst.SelectedValueChanged += new System.EventHandler(this.Order_Lst_SelectedValueChanged);
+            // 
             // CreateOrderForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -167,8 +167,8 @@
             this.Text = "Створення нового замовлення";
             this.Load += new System.EventHandler(this.CreateOrderForm_Load);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 

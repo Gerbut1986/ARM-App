@@ -19,7 +19,7 @@
         public CreateOrderForm()
         {
             InitializeComponent();
-            Delete_Btn.Visible = false;
+            Order_Btn.Enabled = Delete_Btn.Visible = false;
             service = new SMP_Service(Entities.Security.Credential.ConnectStr);          
         }
 
@@ -66,6 +66,12 @@
             if (SelProt_Lst.Items.Count == 0) return;
             Order_Lst.Items.Add(SelectedProduct);
             ClearList();
+            if (Order_Lst.Items.Count > 0)
+            {
+                Order_Btn.Enabled = true;
+                Order_Btn.BackColor = Color.Green;
+                Order_Btn.ForeColor = Color.White;
+            }
         }
 
         private void Order_Btn_Click(object sender, System.EventArgs e)
@@ -112,18 +118,14 @@
             }
         }
 
-        private void Order_Lst_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void Order_Lst_SelectedValueChanged(object sender, System.EventArgs e)
         {
             Delete_Btn.Visible = true;
-            if(Order_Lst.Items.Count > 0)
-            {
-                Order_Btn.Enabled = true;
-                Order_Btn.BackColor = Color.Green;
-                Order_Btn.ForeColor = Color.White;
-            }
-            else
+            if (Order_Lst.Items.Count == 0)
             {
                 Order_Btn.Enabled = false;
+                Order_Btn.BackColor = Color.WhiteSmoke;
+                Order_Btn.ForeColor = Color.Black;
             }
         }
 
