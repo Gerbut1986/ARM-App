@@ -22,6 +22,22 @@
             return db.Users;
         }
 
+        public DataSet GetUsersADO()
+        {
+            SqlConnection conn = null; DataSet dataSet = null;
+            using (conn = new SqlConnection(Credential.ConnectStr))
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Users", conn);
+                SqlDataAdapter sqlAdapter = new SqlDataAdapter(cmd);
+                dataSet = new DataSet();
+                sqlAdapter.Fill(dataSet);
+                cmd.ExecuteNonQuery();
+            }
+
+            return dataSet;
+        }
+
         public string UpdateUser(User user)
         {
             if (user != null)
@@ -33,7 +49,6 @@
             }
             else return $"Модель {nameof(User)} пуста...";
         }
-
         #endregion
 
         #region Products:

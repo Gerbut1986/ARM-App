@@ -46,7 +46,7 @@
 
         private void SessStat_Btn_Click(object sender, EventArgs e)
         {
-
+            new TradeSessStatForm().ShowDialog();
         }
 
         private void Exit_Btn_Click(object sender, EventArgs e)
